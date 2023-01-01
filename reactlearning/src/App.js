@@ -1,51 +1,44 @@
-// import logo from './logo.svg';
-// import './App.css';
-//
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-//
-// export default App;
+const testData = [
+  {name: "Dan Abramov", avatar_url: "https://avatars0.githubusercontent.com/u/810438?v=4", company:"Facebook"},
+  {name: "Dan Abramov", avatar_url: "https://avatars0.githubusercontent.com/u/810438?v=4", company:"Facebook"},
+  {name: "Dan Abramov", avatar_url: "https://avatars0.githubusercontent.com/u/810438?v=4", company:"Facebook"}
+];
+const CardList =(props) => (
+    <div >
+      <Card />
+    </div>
+);
+
 class Card extends React.Component {
   render(){
-    return ( `
-<div> 
-One GitHub Profile ...
-</div> `
+    const profile = testData[0];
+    return (
+        <div className="gitHub-profile" style = {{margin: '1rem'}}>
+          <img src={profile.avatar_url}/>
+          <div className="info" style={{display: 'inline-block', marginleft:10}}>
+            <div className="name" style={{fontSize: '125%'}}> {profile.name}
+            </div>
+            <div className="company">  {profile.company} </div>
+          </div>
+          One GitHub Profile ...
+        </div>
     );
   }
 }
 
 class App extends React.Component {
   render(){
-    return ( ` 
-<div>
-  <div>
-    <Card />
-  </div>
-</div> `
+    return (
+        <div>
+          <div className="header"> {this.props.title}
+            <CardList />
+          </div>
+        </div>
 
     );
   }
 }
 
 ReactDOM.render(
-    <App title="The GitHub Cards App"></App>,
+    <App title="The GitHub Cards App"></App>,mountNode
 );
