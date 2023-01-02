@@ -30,6 +30,7 @@ import {stat} from "fs";
 import {useState} from "react";
 
 const App = () => {
+
     const StarsDisplay =(props: any) => (
         <>
             {utils.range(1,props.count).map(starId =>
@@ -37,10 +38,33 @@ const App = () => {
             )}
         </>
     );
-    const PlayNumber = (props:any) => (
-        <button  className="number" onClick={()=>console.log(`Num`,props.number)}>{props.number}</button>
+
+    const PlayNumber = (props:any ) => (
+
+        <button  className="number"
+                 style={{backgroundColor: colors[props.status as keyof typeof colors]}}
+                 onClick={()=>console.log(`Num`,props.number)}>
+            {props.number}</button>
     );
     const [stars,setStars] = useState(utils.random(1,9));
+
+    // const [availableNums,setAvailableNums] = useState(utils.range(1,9));
+    // const  [candidateNums, setCandidateNums] = useState<any[]>([]);
+    const [availableNums,setAvailableNums] = useState([1,2,3,4,5]);
+    const  [candidateNums, setCandidateNums] = useState([2,3]);
+    const candidateAreWrong = utils.sum(candidateNums) > stars;
+
+    const numberStatus = (number: number) => {
+        if (!availableNums.includes(number))
+        {
+            return 'used';
+        }
+        if (candidateNums.includes(number))
+        {
+            return candidateAreWrong ? 'wrong':'candidate';
+        }
+        return 'available';
+    };
     return (
         <div className="game">
             <div className="help">
@@ -52,7 +76,9 @@ const App = () => {
                 </div>
                 <div className="right">
                     {utils.range(1,9).map(numberId =>
-                       <PlayNumber key={numberId} number={numberId}/>
+                       <PlayNumber key={numberId}
+                                   status = {numberStatus(numberId)}
+                                   number={numberId}/>
                     )}
                 </div>
             </div>
