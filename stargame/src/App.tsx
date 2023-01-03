@@ -43,15 +43,15 @@ const App = () => {
 
         <button  className="number"
                  style={{backgroundColor: colors[props.status as keyof typeof colors]}}
-                 onClick={()=>console.log(`Num`,props.number)}>
+                 onClick={()=>props.onClick(props.number,props.status)}>
             {props.number}</button>
     );
     const [stars,setStars] = useState(utils.random(1,9));
 
-    // const [availableNums,setAvailableNums] = useState(utils.range(1,9));
-    // const  [candidateNums, setCandidateNums] = useState<any[]>([]);
-    const [availableNums,setAvailableNums] = useState([1,2,3,4,5]);
-    const  [candidateNums, setCandidateNums] = useState([2,3]);
+     const [availableNums,setAvailableNums] = useState(utils.range(1,9));
+     const  [candidateNums, setCandidateNums] = useState<any[]>([]);
+   // const [availableNums,setAvailableNums] = useState([1,2,3,4,5]);
+   // const  [candidateNums, setCandidateNums] = useState([2,3]);
     const candidateAreWrong = utils.sum(candidateNums) > stars;
 
     const numberStatus = (number: number) => {
@@ -64,6 +64,29 @@ const App = () => {
             return candidateAreWrong ? 'wrong':'candidate';
         }
         return 'available';
+    };
+
+    const onNumberClick = (number: any,currentStatus: any) =>{
+        if (currentStatus === 'used')
+    {
+        return;
+    }
+        //New CandidateNums:
+        const newCandidateNums= currentStatus === 'available' ? candidateNums.concat(number): candidateNums.filter(cn=> cn !== number);
+        //CandidateNums:
+       // const newCandidateNums = candidateNums.concat(number);
+        if (utils.sum(newCandidateNums) !== stars)
+        {
+            setCandidateNums(newCandidateNums);
+        }
+        else
+        {
+            const newAvailableNums = availableNums.filter( n=> !newCandidateNums.includes(n));
+            // Redraw stars from what is available
+            setStars(utils.randomSumIn(newAvailableNums,9));
+            setAvailableNums(newAvailableNums);
+            setCandidateNums([]);
+        }
     };
     return (
         <div className="game">
@@ -78,7 +101,10 @@ const App = () => {
                     {utils.range(1,9).map(numberId =>
                        <PlayNumber key={numberId}
                                    status = {numberStatus(numberId)}
-                                   number={numberId}/>
+                                   number={numberId}
+                                   onClick = {onNumberClick}
+
+                       />
                     )}
                 </div>
             </div>
