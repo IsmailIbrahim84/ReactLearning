@@ -17,6 +17,11 @@ const App = () => {
                  onClick={()=>props.onClick(props.number,props.status)}>
             {props.number}</button>
     );
+    const PlayAgain = (props:any) => (
+        <div className='game-done'>
+            <button onClick={props.onClick}>Play Again</button>
+        </div>
+    );
     const [stars,setStars] = useState(utils.random(1,9));
 
      const [availableNums,setAvailableNums] = useState(utils.range(1,9));
@@ -24,6 +29,14 @@ const App = () => {
    // const [availableNums,setAvailableNums] = useState([1,2,3,4,5]);
    // const  [candidateNums, setCandidateNums] = useState([2,3]);
     const candidateAreWrong = utils.sum(candidateNums) > stars;
+    const gameIsDone = availableNums.length === 0;
+
+    const resetGame = ()=> {
+        setStars(utils.random(1,9));
+        setAvailableNums(utils.range(1,9));
+        setCandidateNums([]);
+    }
+
 
     const numberStatus = (number: number) => {
         if (!availableNums.includes(number))
@@ -66,8 +79,11 @@ const App = () => {
             </div>
             <div className="body">
                 <div className="left">
+                    {gameIsDone ? (<PlayAgain onClick={resetGame}/>):(
                     <StarsDisplay count={stars}/>
+                        )}
                 </div>
+
                 <div className="right">
                     {utils.range(1,9).map(numberId =>
                        <PlayNumber key={numberId}
