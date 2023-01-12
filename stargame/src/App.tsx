@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 
-const App = () => {
+const Game = (props:any) => {
 
     const StarsDisplay =(props: any) => (
         <>
@@ -45,11 +45,11 @@ const App = () => {
         }
     });
     const gameStatus = availableNums.length ===0 ? 'won' : secondLeft === 0 ? 'lost' : 'active';
-    const resetGame = ()=> {
-        setStars(utils.random(1,9));
-        setAvailableNums(utils.range(1,9));
-        setCandidateNums([]);
-    }
+    // const resetGame = ()=> {
+    //     setStars(utils.random(1,9));
+    //     setAvailableNums(utils.range(1,9));
+    //     setCandidateNums([]);
+    // }
 
 
     const numberStatus = (number: number) => {
@@ -94,7 +94,7 @@ const App = () => {
             </div>
             <div className="body">
                 <div className="left">
-                    {gameStatus !== 'active' ? (<PlayAgain onClick={resetGame} gameStatus={gameStatus}/>):(
+                    {gameStatus !== 'active' ? (<PlayAgain onClick={props.startNewGame} gameStatus={gameStatus}/>):(
                     <StarsDisplay count={stars}/>
                         )}
                 </div>
@@ -115,6 +115,13 @@ const App = () => {
     );
 };
 
+
+
+
+const StarMatch = ()=> {
+    const [gameId, setGameId] = useState(1);
+    return <Game key={gameId} startNewGame={()=> setGameId(gameId+1) }/>
+}
 // Color Theme
 const colors = {
     available: 'lightgray',
@@ -152,4 +159,4 @@ const utils = {
         return sums[utils.random(0, sums.length - 1)];
     },
 };
-export default App;
+export default StarMatch;
