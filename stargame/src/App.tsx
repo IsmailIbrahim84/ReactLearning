@@ -45,12 +45,6 @@ const Game = (props:any) => {
         }
     });
     const gameStatus = availableNums.length ===0 ? 'won' : secondLeft === 0 ? 'lost' : 'active';
-    // const resetGame = ()=> {
-    //     setStars(utils.random(1,9));
-    //     setAvailableNums(utils.range(1,9));
-    //     setCandidateNums([]);
-    // }
-
 
     const numberStatus = (number: number) => {
         if (!availableNums.includes(number))
@@ -114,9 +108,6 @@ const Game = (props:any) => {
         </div>
     );
 };
-
-
-
 
 const StarMatch = ()=> {
     const [gameId, setGameId] = useState(1);
