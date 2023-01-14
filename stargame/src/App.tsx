@@ -30,10 +30,8 @@ const Game = (props:any) => {
      const [availableNums,setAvailableNums] = useState(utils.range(1,9));
      const  [candidateNums, setCandidateNums] = useState<any[]>([]);
      const [secondLeft,setSecondLeft] = useState(10);
-   // const [availableNums,setAvailableNums] = useState([1,2,3,4,5]);
-   // const  [candidateNums, setCandidateNums] = useState([2,3]);
+
     const candidateAreWrong = utils.sum(candidateNums) > stars;
-    // const gameIsDone = availableNums.length === 0;
 
     useEffect(()=>{
         if (secondLeft >0 && availableNums.length > 0)
