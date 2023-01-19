@@ -43,7 +43,7 @@ const Game = (props:any) => {
         }
     });
     const gameStatus = availableNums.length ===0 ? 'won' : secondLeft === 0 ? 'lost' : 'active';
-
+//
     const numberStatus = (number: number) => {
         if (!availableNums.includes(number))
         {
