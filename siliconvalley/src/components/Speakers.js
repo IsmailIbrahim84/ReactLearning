@@ -8,8 +8,9 @@ function Speakers() {
 
         <div className="container speakers">
             <Header/>
-            <SpeakersList data={data}/>
             <SpeakersToolbar/>
+            <SpeakersList data={data}/>
+
         </div>
     )
 }
