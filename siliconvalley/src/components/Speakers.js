@@ -7,11 +7,12 @@ import {useState} from "react";
 function Speakers({data,theme, setTheme}){
     const [showSessions, setShowSessions] = useState(true);
     return (
-
+<>
         <div className="container speakers">
-            <SpeakersToolbar theme={theme} setTheme={setTheme} showSessions={showSessions} setShowSession={setShowSessions}/>
-            <SpeakersList data={data}/>
+            <SpeakersToolbar theme={theme} setTheme={setTheme} showSessions={showSessions} setShowSessions={setShowSessions}/>
+            <SpeakersList data={data} showSessions={showSessions}/>
         </div>
+</>
     )
 }
 export default Speakers;

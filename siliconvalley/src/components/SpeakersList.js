@@ -1,12 +1,12 @@
-import {data} from "../SpeakerData";
+
 import Speaker from "./Speaker";
 
 
-function SpeakersList({data}) {
+function SpeakersList({data,showSessions}) {
     return (<div className="row">
         {data.map(function (speaker) {
             return (
-                <Speaker id={speaker.id} speaker={speaker}/>
+                <Speaker key={speaker.id} speaker={speaker} showSessions={showSessions}/>
             )
         })}
     </div>);
