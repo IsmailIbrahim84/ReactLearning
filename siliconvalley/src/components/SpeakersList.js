@@ -1,7 +1,6 @@
 
 import Speaker from "./Speaker";
 
-
 function SpeakersList({data,showSessions}) {
     return (<div className="row">
         {data.map(function (speaker) {

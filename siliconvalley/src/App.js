@@ -4,7 +4,6 @@ import {data} from "./SpeakerData";
 import Speakers from './components/Speakers';
 import Header from "./components/Header";
 import {useState} from "react";
-
 function App() {
 const [theme, setTheme] = useState('light');
   return (
