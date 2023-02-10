@@ -1,5 +1,5 @@
 
-function SpeakersToolbar(theme, setTheme, showSessions, setShowSessions) {
+function SpeakersToolbar({theme, setTheme, showSessions, setShowSessions}) {
     return (
 
             <section className="toolbar dark-theme-header">
