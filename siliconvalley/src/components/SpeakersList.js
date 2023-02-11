@@ -11,9 +11,11 @@ function SpeakersList({showSessions}) {
                 return speaker.id === id;
             }
         );
+        console.log(previousSpeakerRecord);
         const newSpeakerUpdated = {
             ...previousSpeakerRecord,favorite: !previousSpeakerRecord.favorite
         };
+        console.log(newSpeakerUpdated);
 
         const newSpeakerData = data.map(function (speaker) {
             return speaker.id === id ? newSpeakerUpdated : speaker;

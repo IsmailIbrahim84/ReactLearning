@@ -1,6 +1,4 @@
-import logo from '../logo.svg';
 import '../App.css';
-import * as PropTypes from "prop-types";
 
 
 function Session({session}) {
@@ -52,7 +50,7 @@ function SpeakerDemoGraphics({first, last, bio, company, twitterHandle, favorite
                     {first} {last}
                 </h3>
             </div>
-            <SpeakerFavorite favortie={favorite} onFavoriteToggle={onFavoriteToggle}/>
+            <SpeakerFavorite favorite={favorite} onFavoriteToggle={onFavoriteToggle}/>
             <div>
                 <p className="card-description">{bio}</p>
                 <div className="social d-flex flex-row mt-4">
