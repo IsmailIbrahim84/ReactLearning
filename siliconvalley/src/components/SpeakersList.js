@@ -2,8 +2,6 @@
 import Speaker from "./Speaker";
 import {useEffect, useState} from "react";
 import {data} from "../SpeakerData";
-
-
 function SpeakersList({showSessions}) {
     const [speakerData, setSpeakerData] = useState([]);
     const delay = ms => new Promise(res => setTimeout(res, ms));

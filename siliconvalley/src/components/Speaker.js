@@ -1,6 +1,5 @@
 import '../App.css';
 
-
 function Session({session}) {
     const {title, room} = session;
     return (
@@ -9,8 +8,6 @@ function Session({session}) {
         </div>
     );
 }
-
-
 
 function Sessions({sessions}) {
     return (
