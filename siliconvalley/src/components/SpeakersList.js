@@ -1,50 +1,15 @@
 
 import Speaker from "./Speaker";
-import {useEffect, useState} from "react";
-import {data} from "../SpeakerData";
+import useRequestSpeakers from "../hooks/useRequestSpeakers";
+
 import ReactPlaceholder, {reactplaceholder} from "react-placeholder";
 
 function SpeakersList({showSessions}) {
-    const [speakerData, setSpeakerData] = useState([]);
+  const {isLoading, hasErrored, error, speakerData, onFavoriteToggle} = useRequestSpeakers(2000);
 
-    const [isLoading, setIsLoading] = useState(true);
-    const [hasErrored, setHasErrored] = useState(false);
-    const [error, setError] = useState("");
 
-    const delay = ms => new Promise(res => setTimeout(res, ms));
-
-    useEffect(() => {
-        async function delayFunction() {
-            try {
-                await delay(2000);
-                setIsLoading(false);
-                setSpeakerData(data);
-            }
-            catch (e){
-                setIsLoading(false);
-                setHasErrored(true);
-                setError(e);
-            }
-        }
-        delayFunction();
-    },[]);
-
-    function onFavoriteToggle(id) {
-        const previousSpeakerRecord= data.find(function (speaker) {
-                return speaker.id === id;
-            }
-        );
-        console.log(previousSpeakerRecord);
-        const newSpeakerUpdated = {
-            ...previousSpeakerRecord,favorite: !previousSpeakerRecord.favorite
-        };
-        console.log(newSpeakerUpdated);
-
-        const newSpeakerData = data.map(function (speaker) {
-            return speaker.id === id ? newSpeakerUpdated : speaker;
-        } );
-
-        setSpeakerData(newSpeakerData);
+    if (hasErrored) {
+        return (<div className="text-danger">Error: <b>Loading Speaker Data Failed. {error}</b></div>);
     }
     return (<ReactPlaceholder ready={!isLoading} type="media" rows={10} showLoadingAnimation={true}>
         <div className="row">
