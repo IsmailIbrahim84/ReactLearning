@@ -20,7 +20,7 @@ useEffect(() => {
             await delay(delayTime);
 
              setRequestStatus(REQUEST_STATUS.SUCCESS);
-             setData(data);
+
         }
         catch (e){
            setRequestStatus(REQUEST_STATUS.FAILURE);
@@ -30,21 +30,24 @@ useEffect(() => {
     delayFunction();
 },[]);
 function updateRecord(updatedRecord,doneCallBack){
+    const originalSpeakerData = [...data];
     const newSpeakerData = data.map(function (speaker) {
         return speaker.id === updatedRecord.id ? updatedRecord : speaker;
     } );
     async function delayFunc() {
         try {
+            setData(newSpeakerData);
             await delay(delayTime);
             if (doneCallBack) {
                 doneCallBack();
             }
             setRequestStatus(REQUEST_STATUS.SUCCESS);
-            setData(newSpeakerData);
+
         }
         catch (e){
             setRequestStatus(REQUEST_STATUS.FAILURE);
             setError(e);
+            setData(originalSpeakerData);
         }
 
     }
