@@ -1,4 +1,5 @@
 import '../App.css';
+import {useState} from "react";
 
 function Session({session}) {
     const {title, room} = session;
@@ -29,17 +30,21 @@ function SpeakerImage({id, first, last}) {
 }
 
 function SpeakerFavorite({favorite, onFavoriteToggle}) {
+    const [inTransition, setTransition] = useState(false);
     function doneCallBack(){
+        setTransition(false);
         console.log(`Favorite Toggled   ${new Date().getMilliseconds()  }` );
     }
     return (
         <div className="action padB1">
             <span onClick={function () {
+                setTransition(true);
                 return onFavoriteToggle(doneCallBack);
             }
             }>
                 <i className={favorite === true ? "fa fa-star orange" : "fa fa-star-o orange"}></i>
-                {" "} Favorite {" "}
+                {" "} Favorite {" "} {inTransition === true ? (<span className="fas fa-circle-notch fa-spain"> </span>
+                ) : null}
             </span>
         </div>
     );
