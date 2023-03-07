@@ -8,7 +8,7 @@ function Header() {
            <div className="container mobile-container">
                <div className="d-flex justify-content-between">
                    <div>
-                       <img alt="SVVC Home Page" src="/images/SVCClogo.png"/>
+                       <img alt="SVC Home Page" src="/images/SVCClogo.png"/>
                    </div>
                    <div className="Light">
                        <h4 className="header-title">
