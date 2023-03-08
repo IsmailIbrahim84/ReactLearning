@@ -3,18 +3,17 @@ import './App.css';
 import Speakers from './components/Speakers';
 import Header from "./components/Header";
 import {createContext,useState} from "react";
+import Layout from "./components/Layout";
 
 export const ThemeContext = createContext();
 
 function App() {
 const [theme, setTheme] = useState('light');
   return (
-      <ThemeContext.Provider value={{theme,setTheme}}>
-      <div className={theme=== "light" ? "container-fluid light" : "container-fluid dark"}>
+      <Layout startTheme="light">
       <Header  />
           <Speakers/>
-      </div>
-          </ThemeContext.Provider>
+        </Layout>
           );
 }
 
