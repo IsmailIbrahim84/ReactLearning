@@ -12,5 +12,5 @@ function ThemeProvider ({startTheme,children}) {
         </ThemeContext.Provider>
     )
 }
-export default ThemeProvider;
+export  {ThemeProvider};
 
