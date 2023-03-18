@@ -1,4 +1,3 @@
-import {data} from "../SpeakerData";
 import {useEffect, useState} from "react";
 
 export const REQUEST_STATUS = {
@@ -28,7 +27,7 @@ useEffect(() => {
         }
     }
     delayFunction();
-},[]);
+},[delayTime]);
 function updateRecord(updatedRecord,doneCallBack){
     const originalSpeakerData = [...data];
     const newSpeakerData = data.map(function (speaker) {

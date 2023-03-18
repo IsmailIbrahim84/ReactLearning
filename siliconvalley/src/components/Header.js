@@ -1,4 +1,4 @@
-import {ThemeContext} from "../App";
+import {ThemeContext} from "../components/Layout";
 import {useContext} from "react";
 
 function Header() {
