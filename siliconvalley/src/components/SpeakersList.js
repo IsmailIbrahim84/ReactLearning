@@ -5,8 +5,9 @@ import useRequestDelay,{REQUEST_STATUS} from "../hooks/useRequestDelay";
 import ReactPlaceholder, {reactplaceholder} from "react-placeholder";
 import {data} from "../SpeakerData";
 
-function SpeakersList({showSessions}) {
+function SpeakersList() {
   const {requestStatus, error, data:speakerData, updateRecord} = useRequestDelay(200,data);
+
 
 
     if (REQUEST_STATUS.FAILURE === requestStatus) {
@@ -17,7 +18,7 @@ function SpeakersList({showSessions}) {
         {speakerData.map(function (speaker) {
 
             return (
-                <Speaker key={speaker.id} speaker={speaker} showSessions={showSessions} onFavoriteToggle={(doneCallBack)=>{
+                <Speaker key={speaker.id} speaker={speaker} onFavoriteToggle={(doneCallBack)=>{
                 updateRecord({
                     ...speaker,
                     favorite: !speaker.favorite

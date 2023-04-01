@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext } from "react";
 import UseSpeakerFilter from "../hooks/useSpeakerFilter";
 
 const SpeakerFilterContext = createContext();
