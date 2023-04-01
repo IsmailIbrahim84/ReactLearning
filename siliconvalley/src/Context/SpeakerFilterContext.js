@@ -13,4 +13,4 @@ return (
 </SpeakerFilterContext.Provider>
 );
 }
-export default SpeakerFilterProvider;
+export  {SpeakerFilterProvider, SpeakerFilterContext};
