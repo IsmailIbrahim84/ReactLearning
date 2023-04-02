@@ -6,7 +6,7 @@ function SpeakerFilterProvider ({children,startingShowSessions = false, starting
 {
 const {showSessions, setShowSessions,eventYear,setEventYear,searchQuery,setSearchQuery,EVENT_YEARS} = UseSpeakerFilter(startingShowSessions, startingEventYear);
 return (
-<SpeakerFilterContext.Provider value={{showSessions, setShowSessions}}>
+<SpeakerFilterContext.Provider value={{showSessions, setShowSessions,eventYear,searchQuery,EVENT_YEARS}}>
 
     {children}
 
