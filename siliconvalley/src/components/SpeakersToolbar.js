@@ -30,6 +30,17 @@ function SpeakersToolbar() {
                                 </select>
                             </label>
                         </li>
+                        <li >
+                            <div className="input-group">
+                                <input type="text" className="form-control" placeholder={"Search..."} onChange={(event)=>{
+                                setSearchQuery(event.target.value);
+                                }
+                                }/>
+                                <div className="input-group-append">
+                                    <button className="btn btn-secondary" type="button"><i className={"fa fa-search"}></i> </button>
+                                </div>
+                            </div>
+                        </li>
                     </ul>
                     </div>
                 </div>
