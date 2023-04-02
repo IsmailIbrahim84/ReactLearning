@@ -44,7 +44,7 @@ function SpeakersToolbar() {
                         <li className="d-flex flex-column flex-md-row">
                             <strong>Year</strong>
                             <label className="dropmenu">
-                                <select className="form-control" value={eventYear} onChange={(currentTarget)=>{
+                                <select className="form-control" value={eventYear} onChange={({currentTarget})=>{
                                     setEventYear(currentTarget.value);
                                 }}>
                                     {EVENT_YEARS.map((year)=> {
