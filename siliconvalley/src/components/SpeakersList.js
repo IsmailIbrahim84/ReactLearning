@@ -33,13 +33,7 @@ function SpeakersList() {
         }
             ).map(function (speaker) {
             return (
-                <Speaker key={speaker.id} speaker={speaker} onFavoriteToggle={(doneCallBack)=>{
-                updateRecord({
-                    ...speaker,
-                    favorite: !speaker.favorite
-                },doneCallBack)
-                }
-                }/>
+                <Speaker key={speaker.id} speaker={speaker} updateRecord={updateRecord}/>
             )
         })}
     </div>
