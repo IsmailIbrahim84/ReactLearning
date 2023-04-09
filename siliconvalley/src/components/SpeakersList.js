@@ -6,7 +6,6 @@ import ReactPlaceholder from "react-placeholder";
 import {data} from "../SpeakerData";
 import {useContext} from "react";
 import {SpeakerFilterContext} from "../Context/SpeakerFilterContext";
-
 function SpeakersList() {
   const {requestStatus, error, data:speakerData, updateRecord} = useRequestDelay(200,data);
     const {searchQuery, eventYear} = useContext(SpeakerFilterContext);
