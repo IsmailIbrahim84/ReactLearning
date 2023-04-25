@@ -52,6 +52,28 @@ function updateRecord(updatedRecord,doneCallBack){
     }
      delayFunc()
 }
+
+function InsertRecord (record, doneCallBack){
+    const originalSpeakerData = [...data];
+    const newSpeakerData = [record,...data];
+    async function delayFunc() {
+        try {
+            setData(newSpeakerData);
+            await delay(delayTime);
+            if (doneCallBack) {
+                doneCallBack();
+            }
+            setRequestStatus(REQUEST_STATUS.SUCCESS);
+
+        }
+        catch (e){
+            setRequestStatus(REQUEST_STATUS.FAILURE);
+            setError(e);
+            setData(originalSpeakerData);
+        }
+
+    }
+}
 // function onFavoriteToggle(id) {
 //     const previousSpeakerRecord= data.find(function (speaker) {
 //             return speaker.id === id;
