@@ -13,8 +13,9 @@ function Session({session}) {
 }
 
 function Sessions() {
-    const {speaker: {sessions}} = useContext(SpeakerContext);
     const {eventYear} = useContext(SpeakerFilterContext);
+    const {speaker: {sessions}} = useContext(SpeakerContext);
+
     return (
         <div className="sessionBox card h-250">
         {sessions.filter(function (session) {
